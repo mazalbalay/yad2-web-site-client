@@ -12,4 +12,4 @@ A client login is required to save ads in a personal area
 Upload ads and of course delete and edit.
 Offline client will have view only option.
 This project uses react api redux and backwind.
-The site is also optimized for mobile
+The site is also responsive for mobile.
