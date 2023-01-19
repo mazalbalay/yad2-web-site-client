@@ -7,9 +7,9 @@
 בפקוירט זה נעשה שימוש ב- react api redux ו-tailwind.
 האתר מותאם גם לנייד
 
-A social network client side project that helps advertise random products for sale.
-A client login is required in order to save ads in a personal area
-Upload ads and of course delete or edit.
-An offline client will have the option to view only.
-This project uses react api redux and tailwind.
+A client side of a social network that helps advertise random products for sale.
+A client login is required to save ads in a personal area
+Upload ads and of course delete and edit.
+Offline client will have view only option.
+This project uses react api redux and backwind.
 The site is also optimized for mobile
