@@ -16,7 +16,7 @@ export default function Login() {
   });
 
   const login = () => {
-    axios.post(`http://localhost:8000/login`, user).then((res) => {
+    axios.post(`https://yad2-web-site-server.onrender.com/login`, user).then((res) => {
       if (res.data[0] === "login") {
         window.localStorage.setItem("login",JSON.stringify(res.data[1]))
         const action = { type: "setLogin", payload: res.data[1] };

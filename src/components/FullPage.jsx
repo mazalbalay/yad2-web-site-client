@@ -14,7 +14,7 @@ export default function FullPage(props) {
   const selctor = useSelector((state) => state);
 
   const getData = async () => {
-    const { data } = await axios.get(`http://localhost:8000/${props.option}`);
+    const { data } = await axios.get(`https://yad2-web-site-server.onrender.com/${props.option}`);
 
     setData3(data.filter((value) => value._id !== props.id));
     setData2(data.filter((value) => value._id === props.id));

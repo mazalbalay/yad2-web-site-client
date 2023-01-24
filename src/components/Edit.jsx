@@ -8,12 +8,12 @@ export default function Edit(props) {
   const [obj, setObj] = useState({});
 
   const getData = async () => {
-    const { data } = await axios.get(`http://localhost:8000/${option}`);
+    const { data } = await axios.get(`https://yad2-web-site-server.onrender.com/${option}`);
     setObj(data.filter((v) => v._id === props.id));
   };
 
   const editData = async () => {
-    await axios.put(`http://localhost:8000/${option}/${props.id}`, obj);
+    await axios.put(`https://yad2-web-site-server.onrender.com/${option}/${props.id}`, obj);
     console.log(obj);
   };
 

@@ -22,17 +22,17 @@ export default function Cars() {
   const getData = async () => {
     if (location == "/login") {
       const { data } = await axios.get(
-        `http://localhost:8000/cars/${selctor.state._id}`,
+        `https://yad2-web-site-server.onrender.com/${selctor.state._id}`,
       );
       setData(data);
     } else {
-      const { data } = await axios.get(`http://localhost:8000/cars`);
+      const { data } = await axios.get(`https://yad2-web-site-server.onrender.com`);
       setData(data);
     }
   };
 
   const deleteData = async (id) => {
-    await axios.delete(`http://localhost:8000/cars/${id}`);
+    await axios.delete(`https://yad2-web-site-server.onrender.com/${id}`);
     console.log("deleted");
   };
 
@@ -45,7 +45,7 @@ export default function Cars() {
     if (selctor?.state) {
       const post = data.filter((v) => v._id === id)[0];
       post.likes = [selctor.state?._id];
-      await axios.put(`http://localhost:8000/cars/${id}`, post);
+      await axios.put(`https://yad2-web-site-server.onrender.com/${id}`, post);
       if (location == `/cars`) {
         setLike(!like);
       }
@@ -60,7 +60,7 @@ export default function Cars() {
       setLike(!like);
     }
     post.likes.splice(index, 1);
-    await axios.put(`http://localhost:8000/cars/${id}`, post);
+    await axios.put(`https://yad2-web-site-server.onrender.com/${id}`, post);
   };
 
   useEffect(() => {
@@ -101,7 +101,7 @@ export default function Cars() {
             return (
               <div
                 key={i}
-                className="m-6 md:h-56 flex md:flex-row flex-col justify-between shadow-lg rounded-b-lg bg-white bg-opacity-25 "
+                className="m-14 md:h-56 flex md:flex-row flex-col justify-between shadow-lg rounded-b-lg bg-white bg-opacity-25 "
               >
                 <div className="md:h-56 md:w-60 h-64 ">
                   <img

@@ -33,15 +33,11 @@ export default function AddSome() {
       obj.lName &&
       obj.address &&
       obj.phoneNumber&&
-      // obj.type&&
-      // obj.model&&
-      // obj.year&&
-      // obj.horseoower&&
       obj.description&&
       obj.price&&
       obj.imgUrl
     ) {
-      axios.post(`http://localhost:8000/${option}`, obj);
+      axios.post(`https://yad2-web-site-server.onrender.com/${option}`, obj);
       console.log(obj);
     } else {
       alert("invlid input");

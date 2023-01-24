@@ -11,6 +11,7 @@ import axios from "axios";
 import Cars from "./components/Cars";
 import Other from "./components/Other";
 import Furnitures from "./components/Furnitures";
+import UserPage from "./components/UserPage"
 
 
 function App() {
@@ -49,6 +50,7 @@ function App() {
         />
         <Route path="/registration" element={<Registration />} />
         <Route path="/login" element={<Login />} />
+        {/* <Route path="/userPage" element={<UserPage/>} /> */}
       </Routes>
       <Footer />
     </div>

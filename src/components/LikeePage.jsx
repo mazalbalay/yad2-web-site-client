@@ -10,7 +10,7 @@ export default function LikeePage() {
   const [other, setOther] = useState([]);
 
   const getData = async (option, set) => {
-    const { data } = await axios.get(`http://localhost:8000/${option}`);
+    const { data } = await axios.get(`https://yad2-web-site-server.onrender.com/${option}`);
     const filtered = data.filter((v) => v.likes == selctor.state._id);
     set(filtered);
   };

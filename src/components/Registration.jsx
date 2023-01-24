@@ -22,7 +22,7 @@ export default function Registration() {
       user.email &&
       user.password === user.ReEntetPassword
     ) {
-      axios.post(`http://localhost:8000/registration`, user).then((res) => {
+      axios.post(`https://yad2-web-site-server.onrender.com/registration`, user).then((res) => {
         console.log(res);
         navigate("/login");
       });

@@ -21,17 +21,17 @@ export default function Furnitures() {
   const getData = async () => {
     if (location == "/login") {
       const { data } = await axios.get(
-        `http://localhost:8000/furnitures/${selctor.state._id}`,
+        `https://yad2-web-site-server.onrender.com/furnitures/${selctor.state._id}`,
       );
       setData(data);
     } else {
-      const { data } = await axios.get(`http://localhost:8000/furnitures`);
+      const { data } = await axios.get(`https://yad2-web-site-server.onrender.com/furnitures`);
       setData(data);
     }
   };
 
   const deleteData = async (id) => {
-    await axios.delete(`http://localhost:8000/furnitures/${id}`);
+    await axios.delete(`https://yad2-web-site-server.onrender.com/furnitures/${id}`);
     console.log("deleted");
   };
 
@@ -44,7 +44,7 @@ export default function Furnitures() {
     if (selctor?.state) {
       const post = data.filter((v) => v._id === id)[0];
       post.likes = [selctor.state?._id];
-      await axios.put(`http://localhost:8000/furnitures/${id}`, post);
+      await axios.put(`https://yad2-web-site-server.onrender.com/furnitures/${id}`, post);
       if (location == `/furnitures`) {
         setLike(!like);
       }
@@ -59,7 +59,7 @@ export default function Furnitures() {
       setLike(!like);
     }
     post.likes.splice(index, 1);
-    await axios.put(`http://localhost:8000/furnitures/${id}`, post);
+    await axios.put(`https://yad2-web-site-server.onrender.com/furnitures/${id}`, post);
   };
 
   useEffect(() => {
@@ -100,7 +100,7 @@ export default function Furnitures() {
             return (
               <div
                 key={i}
-                className="m-6 md:h-56 flex md:flex-row flex-col justify-between shadow-lg rounded-b-lg bg-white bg-opacity-25 "
+                className="m-14 md:h-56 flex md:flex-row flex-col justify-between shadow-lg rounded-b-lg bg-white bg-opacity-25 "
               >
                 <div className="md:h-56 md:w-60 h-64 ">
                   <img
