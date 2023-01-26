@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
+import {api} from './Api'
 
 export default function Registration() {
   const navigate = useNavigate();
@@ -22,7 +23,7 @@ export default function Registration() {
       user.email &&
       user.password === user.ReEntetPassword
     ) {
-      axios.post(`https://yad2-web-site-server.onrender.com/registration`, user).then((res) => {
+      axios.post(`${api}/registration`, user).then((res) => {
         console.log(res);
         navigate("/login");
       });

@@ -5,6 +5,7 @@ import { useEffect } from "react";
 import { BsFillPersonFill } from "react-icons/bs";
 import { AiOutlineClose } from "react-icons/ai";
 import { useSelector } from "react-redux";
+import {api} from './Api'
 
 export default function FullPage(props) {
   const [data2, setData2] = useState([]);
@@ -14,7 +15,7 @@ export default function FullPage(props) {
   const selctor = useSelector((state) => state);
 
   const getData = async () => {
-    const { data } = await axios.get(`https://yad2-web-site-server.onrender.com/${props.option}`);
+    const { data } = await axios.get(`${api}/${props.option}`);
 
     setData3(data.filter((value) => value._id !== props.id));
     setData2(data.filter((value) => value._id === props.id));

@@ -2,27 +2,32 @@ import { React, useState } from "react";
 import FileBase64 from "react-file-base64";
 import axios from "axios";
 import { useEffect } from "react";
+import {api} from './Api'
+import Backdrop from "@mui/material/Backdrop";
+import CircularProgress from "@mui/material/CircularProgress";
 
 export default function Edit(props) {
   const [option, setOption] = useState(props.option);
-  const [obj, setObj] = useState({});
+  const [obj, setObj] = useState();
 
   const getData = async () => {
-    const { data } = await axios.get(`https://yad2-web-site-server.onrender.com/${option}`);
+    const { data } = await axios.get(`${api}/${option}`);
     setObj(data.filter((v) => v._id === props.id));
+    console.log(obj);
   };
 
   const editData = async () => {
-    await axios.put(`https://yad2-web-site-server.onrender.com/${option}/${props.id}`, obj);
-    console.log(obj);
+    await axios.put(`${api}/${option}/${props.id}`, obj);
   };
 
   useEffect(() => {
     getData();
-    console.log(obj);
-  }, []);
+  },[]);
 
   return (
+    <>
+    {obj ?(
+
     <div
       id="top"
       className="fixed top-0 right-0 bg-opacity-90 bg-white flex flex-col h-screen w-full items-center overflow-scroll "
@@ -139,5 +144,16 @@ export default function Edit(props) {
         </div>
       </div>
     </div>
+     ) : (
+      <div>
+        <Backdrop
+          sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
+          open
+        >
+          <CircularProgress color="inherit" />
+        </Backdrop>
+      </div>
+    )}
+  </>
   );
 }

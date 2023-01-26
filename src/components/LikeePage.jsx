@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import ComponentPage from "./ComponentPage";
+import {api} from './Api'
 
 export default function LikeePage() {
   const selctor = useSelector((state) => state);
@@ -10,7 +11,7 @@ export default function LikeePage() {
   const [other, setOther] = useState([]);
 
   const getData = async (option, set) => {
-    const { data } = await axios.get(`https://yad2-web-site-server.onrender.com/${option}`);
+    const { data } = await axios.get(`${api}/${option}`);
     const filtered = data.filter((v) => v.likes == selctor.state._id);
     set(filtered);
   };

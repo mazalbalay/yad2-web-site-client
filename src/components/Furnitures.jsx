@@ -6,13 +6,16 @@ import { AiTwotoneLike } from "react-icons/ai";
 import { BsFillPersonFill } from "react-icons/bs";
 import FullPage from "./FullPage";
 import { useLocation, useNavigate } from "react-router-dom";
+import {api} from "./Api"
+import Backdrop from "@mui/material/Backdrop";
+import CircularProgress from "@mui/material/CircularProgress";
 
 export default function Furnitures() {
   const [id, setID] = useState("");
   const [input, setInput] = useState("");
   const [like, setLike] = useState(false);
   const location = useLocation().pathname;
-  const [data, setData] = useState([]);
+  const [data, setData] = useState();
   const [edit, setEdit] = useState(false);
   const [fullPage, setFullPage] = useState(false);
   const selctor = useSelector((state) => state);
@@ -21,17 +24,17 @@ export default function Furnitures() {
   const getData = async () => {
     if (location == "/login") {
       const { data } = await axios.get(
-        `https://yad2-web-site-server.onrender.com/furnitures/${selctor.state._id}`,
+        `${api}/furnitures/${selctor.state._id}`,
       );
       setData(data);
     } else {
-      const { data } = await axios.get(`https://yad2-web-site-server.onrender.com/furnitures`);
+      const { data } = await axios.get(`${api}/furnitures`);
       setData(data);
     }
   };
 
   const deleteData = async (id) => {
-    await axios.delete(`https://yad2-web-site-server.onrender.com/furnitures/${id}`);
+    await axios.delete(`${api}/${id}`);
     console.log("deleted");
   };
 
@@ -44,7 +47,7 @@ export default function Furnitures() {
     if (selctor?.state) {
       const post = data.filter((v) => v._id === id)[0];
       post.likes = [selctor.state?._id];
-      await axios.put(`https://yad2-web-site-server.onrender.com/furnitures/${id}`, post);
+      await axios.put(`${api}/furnitures/${id}`, post);
       if (location == `/furnitures`) {
         setLike(!like);
       }
@@ -59,7 +62,7 @@ export default function Furnitures() {
       setLike(!like);
     }
     post.likes.splice(index, 1);
-    await axios.put(`https://yad2-web-site-server.onrender.com/furnitures/${id}`, post);
+    await axios.put(`${api}/${id}`, post);
   };
 
   useEffect(() => {
@@ -67,6 +70,8 @@ export default function Furnitures() {
   });
 
   return (
+    <>
+    {data ? (
     <div className="flex flex-col justify-start items-center pb-10">
       {location === "/login" ? (
         ""
@@ -100,7 +105,7 @@ export default function Furnitures() {
             return (
               <div
                 key={i}
-                className="m-14 md:h-56 flex md:flex-row flex-col justify-between shadow-lg rounded-b-lg bg-white bg-opacity-25 "
+                className="m-6 md:h-56 flex md:flex-row flex-col justify-between shadow-lg rounded-b-lg bg-white bg-opacity-25 "
               >
                 <div className="md:h-56 md:w-60 h-64 ">
                   <img
@@ -205,5 +210,16 @@ export default function Furnitures() {
         {edit ? <Edit id={id} option="furnitures" /> : ""}
       </div>
     </div>
+       ) : (
+        <div>
+          <Backdrop
+            sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
+            open
+          >
+            <CircularProgress color="inherit" />
+          </Backdrop>
+        </div>
+      )}
+    </>
   );
 }

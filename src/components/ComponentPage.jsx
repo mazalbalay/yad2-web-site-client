@@ -6,6 +6,7 @@ import { AiTwotoneLike } from "react-icons/ai";
 import { BsFillPersonFill } from "react-icons/bs";
 import FullPage from "./FullPage";
 import { useLocation, useNavigate } from "react-router-dom";
+import {api} from './Api'
 
 export default function ComponentPage(props) {
   const [id, setID] = useState("");
@@ -19,7 +20,7 @@ export default function ComponentPage(props) {
   const navigate = useNavigate();
 
   const deleteData = async (id) => {
-    await axios.delete(`https://yad2-web-site-server.onrender.com/${props.option}/${id}`);
+    await axios.delete(`${api}/${props.option}/${id}`);
     console.log("deleted");
   };
 
@@ -32,7 +33,7 @@ export default function ComponentPage(props) {
     if (selctor?.state) {
       const post = data.filter((v) => v._id === id)[0];
       post.likes = [selctor.state?._id];
-      await axios.put(`https://yad2-web-site-server.onrender.com/${props.option}/${id}`, post);
+      await axios.put(`${api}/${props.option}/${id}`, post);
       if (location == `/${props.option}`) {
         setLike(!like);
       }
@@ -47,7 +48,7 @@ export default function ComponentPage(props) {
       setLike(!like);
     }
     post.likes.splice(index, 1);
-    await axios.put(`https://yad2-web-site-server.onrender.com/${props.option}/${id}`, post);
+    await axios.put(`${api}/${props.option}/${id}`, post);
   };
   useEffect(() => {
     setData(props.data);

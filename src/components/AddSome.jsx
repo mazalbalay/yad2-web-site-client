@@ -4,6 +4,7 @@ import axios from "axios";
 import FileBase64 from "react-file-base64";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import {api} from './Api'
 
 export default function AddSome() {
   const selctor = useSelector((state) => state);
@@ -37,7 +38,7 @@ export default function AddSome() {
       obj.price&&
       obj.imgUrl
     ) {
-      axios.post(`https://yad2-web-site-server.onrender.com/${option}`, obj);
+      axios.post(`${api}/${option}`, obj);
       console.log(obj);
     } else {
       alert("invlid input");
