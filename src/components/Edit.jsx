@@ -35,7 +35,7 @@ export default function Edit(props) {
       <h1 className="text-2xl font-bold my-6 capitalize pl-6">
         Edit {option}: <span className="font-medium text-xl">{props.id}</span>
       </h1>
-      <div className="flex flex-col md:w-1/3 m-auto justify-center ">
+      <div className="flex flex-col md:w-1/3 w-4/5 m-auto justify-center ">
         first name:
         <input
           onChange={(e) => setObj({ ...obj, fName: e.target.value })}
