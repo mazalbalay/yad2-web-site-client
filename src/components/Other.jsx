@@ -35,7 +35,7 @@ export default function Other() {
   };
 
   const deleteData = async (id) => {
-    await axios.delete(`${api}/${id}`);
+    await axios.delete(`${api}/other/${id}`);
     console.log("deleted");
   };
 

@@ -34,9 +34,10 @@ export default function Furnitures() {
   };
 
   const deleteData = async (id) => {
-    await axios.delete(`${api}/${id}`);
+    await axios.delete(`${api}/furnitures/${id}`);
     console.log("deleted");
   };
+
 
   const editData = (id) => {
     setID(id);
