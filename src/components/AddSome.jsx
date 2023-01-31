@@ -71,7 +71,7 @@ export default function AddSome() {
               </h2>
             </div>
           ) : (
-            <form className="flex flex-col md:w-1/3 m-auto justify-center ">
+            <form className="flex flex-col md:w-1/3 w-5/6 m-auto justify-center ">
               <h1 className="flex justify-center text-3xl">{option}</h1>
               first name:
               <input
