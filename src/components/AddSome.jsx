@@ -3,16 +3,17 @@ import { useState } from "react";
 import axios from "axios";
 import FileBase64 from "react-file-base64";
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
-import {api} from './Api'
+import { Link, useNavigate } from "react-router-dom";
+import { api } from "./Api";
 
 export default function AddSome() {
   const selctor = useSelector((state) => state);
+  const navigate = useNavigate();
   const [option, setOption] = useState("");
   const [obj, setObj] = useState({
-    userName:selctor.state?.userName,
-    userName2:selctor.state?.firstName,
-    userEmail:selctor.state?.email,
+    userName: selctor.state?.userName,
+    userName2: selctor.state?.firstName,
+    userEmail: selctor.state?.email,
     fName: "",
     lName: "",
     address: "",
@@ -25,7 +26,7 @@ export default function AddSome() {
     price: "",
     imgUrl: "",
     idPost: selctor.state?._id,
-    links:[""]
+    links: [""],
   });
 
   const postData = async () => {
@@ -33,9 +34,9 @@ export default function AddSome() {
       obj.fName &&
       obj.lName &&
       obj.address &&
-      obj.phoneNumber&&
-      obj.description&&
-      obj.price&&
+      obj.phoneNumber &&
+      obj.description &&
+      obj.price &&
       obj.imgUrl
     ) {
       axios.post(`${api}/${option}`, obj);
@@ -157,7 +158,10 @@ export default function AddSome() {
                 onDone={({ base64 }) => setObj({ ...obj, imgUrl: base64 })}
               />
               <button
-                onClick={postData}
+                onClick={()=>{
+                  postData()
+                  navigate("/")
+                }}
                 className="border-2 border-black p-2 my-4 rounded-md"
               >
                 add {option}

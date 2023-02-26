@@ -15,7 +15,7 @@ export default function Home() {
   return (
     <div className=" bg-red-50 pt-32 bg-opacity-50">
       <Cars/>
-      <AddSome />
+      {/* <AddSome /> */}
       <Furnitures/>
       <Other/>
     </div>

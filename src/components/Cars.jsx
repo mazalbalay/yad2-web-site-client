@@ -130,12 +130,12 @@ export default function Cars() {
                         {v.likes?.find((v) => v === selctor.state?._id) ? (
                           <AiTwotoneLike
                             onClick={() => unLike(v._id)}
-                            className="text-2xl text-red-200"
+                            className="text-2xl text-red-200 cursor-pointer"
                           />
                         ) : (
                           <AiTwotoneLike
                             onClick={() => likeFun(v._id)}
-                            className="text-2xl text-gray-500"
+                            className="text-2xl text-gray-500 cursor-pointer"
                           />
                         )}
                       </div>
